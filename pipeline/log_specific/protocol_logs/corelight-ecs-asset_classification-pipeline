@@ -1,0 +1,179 @@
+{
+  "description": "Corelight ingest pipeline for 'asset_classification' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2026050501,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": ["network", "host"],
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": "info"
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_observations"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "classification_ts",
+        "target_field": "corelight.asset_classification.classification_ts",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "ip",
+        "target_field": "host.ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "host.address",
+        "value": "{{{host.ip}}}",
+        "ignore_failure": true,
+        "if": "ctx.host != null && ctx.host.ip != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "mac",
+        "target_field": "host.mac",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "vendor_mac",
+        "target_field": "host.mac_oui_vendor_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "confidence",
+        "target_field": "corelight.asset_classification.confidence",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "device_type",
+        "target_field": "corelight.asset_classification.device_type",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "type_name",
+        "target_field": "corelight.asset_classification.type_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "type_group",
+        "target_field": "corelight.asset_classification.type_group",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "brand",
+        "target_field": "host.manufacturer",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "model",
+        "target_field": "host.model",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "serial",
+        "target_field": "host.serial_number",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "os_name",
+        "target_field": "host.os.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "os_ver",
+        "target_field": "host.os.version",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "os_build",
+        "target_field": "host.os.build",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "sources",
+        "target_field": "corelight.asset_classification.sources",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    }
+  ]
+}

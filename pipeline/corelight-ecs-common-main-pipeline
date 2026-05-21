@@ -417,7 +417,10 @@
         "if": "ctx?.log.id.uids != null"
       }
     },
-    
+    "join": {
+      "field": "log.id.uid",
+      "separator": ","
+    },
     {
       "rename": {
         "field": "@sensor",

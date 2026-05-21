@@ -417,9 +417,13 @@
         "if": "ctx?.log.id.uids != null"
       }
     },
+    {
     "join": {
       "field": "log.id.uid",
-      "separator": ","
+      "separator": ",",
+      "if": "ctx?.log?.id?.uid instanceof List",
+        "ignore_failure": true
+    }
     },
     {
       "rename": {

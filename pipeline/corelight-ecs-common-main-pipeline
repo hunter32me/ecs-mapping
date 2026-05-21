@@ -410,6 +410,14 @@
         "if": "ctx?.uids != null"
       }
     },
+     {
+      "set": {
+        "field": "log.id.uid",
+        "value": "{{{log.id.uids}}}",
+        "if": "ctx?.log.id.uids != null"
+      }
+    },
+    
     {
       "rename": {
         "field": "@sensor",

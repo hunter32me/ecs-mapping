@@ -418,6 +418,14 @@
       }
     },
     {
+  "script": {
+    "lang": "painless",
+    "source": "def field = ctx?.log?.id?.uid; if (field instanceof Map) { def keys = new ArrayList(field.keySet()); keys.sort((a, b) -> Integer.parseInt(a.toString()) - Integer.parseInt(b.toString())); def values = new ArrayList(); for (def key : keys) { values.add(field[key].toString()); } ctx.log.id.uid = String.join(',', values); }",
+    "if": "ctx?.log?.id?.uid instanceof Map",
+    "ignore_failure": true
+  }
+},
+    {
     "join": {
       "field": "log.id.uid",
       "separator": ",",

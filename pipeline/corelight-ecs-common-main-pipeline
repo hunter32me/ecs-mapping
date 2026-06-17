@@ -536,6 +536,7 @@
         "field": [
           "ts",
           "uid",
+          "uids",
           "_write_ts"
         ],
         "ignore_missing": true

@@ -445,7 +445,7 @@
     {
       "set": {
         "field": "event.id",
-        "value": "{{{log.id.uid}}",
+        "value": "{{{log.id.uid}}}",
         "if": "ctx?.uid != null"
       }
     },

@@ -391,13 +391,6 @@
     },    
     {
       "set": {
-        "field": "event.id",
-        "value": "{{{uid}}}",
-        "if": "ctx?.uid != null"
-      }
-    },
-    {
-      "set": {
         "field": "log.id.uid",
         "value": "{{{uid}}}",
         "if": "ctx?.uid != null"
@@ -448,6 +441,13 @@
       "if": "ctx?.log?.id?.uid instanceof List",
         "ignore_failure": true
     }
+    },
+    {
+      "set": {
+        "field": "event.id",
+        "value": "{{{log.id.uid}}",
+        "if": "ctx?.uid != null"
+      }
     },
     {
       "rename": {

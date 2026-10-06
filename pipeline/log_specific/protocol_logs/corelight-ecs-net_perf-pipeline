@@ -110,18 +110,6 @@
         "target_field": "net_perf.window",
          "ignore_missing": true
       }
-    },
-    {
-      "dot_expander": {
-        "field": "labels.corelight.logstash_input_host_listening_ip",
-        "if": "ctx['labels.corelight.logstash_input_host_listening_ip'] != null"
-      }
-    },
-    {
-    "set": {
-        "field": "host.ip",
-        "value": "{{{labels.corelight.logstash_input_host_listening_ip}}}"
-    }
     }
   ]
 }

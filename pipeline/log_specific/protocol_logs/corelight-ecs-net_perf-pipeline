@@ -110,6 +110,13 @@
         "target_field": "net_perf.window",
          "ignore_missing": true
       }
+    },
+    {
+    "rename": {
+        "field": "labels.corelight.logstash_input_host_listening_ip",
+        "target_field": "host.ip",
+        "ignore_missing": true
+    }
     }
   ]
 }

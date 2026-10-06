@@ -116,7 +116,7 @@
         "field": "labels.corelight.logstash_input_host_listening_ip",
         "if": "ctx['labels.corelight.logstash_input_host_listening_ip'] != null"
       }
-    }
+    },
     {
     "rename": {
         "field": "labels.corelight.logstash_input_host_listening_ip",

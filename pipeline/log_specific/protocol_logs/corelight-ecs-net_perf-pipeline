@@ -120,8 +120,7 @@
     {
     "set": {
         "field": "host.ip",
-        "value": "{{{labels.corelight.logstash_input_host_listening_ip}}}",
-        "ignore_missing": true
+        "value": "{{{labels.corelight.logstash_input_host_listening_ip}}}"
     }
     }
   ]
